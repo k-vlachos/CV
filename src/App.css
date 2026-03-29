@@ -1,0 +1,101 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+.hero {
+  margin-bottom: 60px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.hero h2 {
+  font-size: 1.2rem;
+  color: #888;
+  margin-top: 8px;
+  font-weight: 400;
+}
+
+.links {
+  margin-top: 16px;
+  display: flex;
+  gap: 20px;
+}
+
+.section {
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #58a6ff;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #222;
+  padding-bottom: 8px;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-tag {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.card {
+  background-color: #141414;
+  border: 1px solid #222;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.card-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: #58a6ff;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.card h4 {
+  font-size: 1rem;
+  color: #ffffff;
+}
+
+.duration {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.company {
+  font-size: 0.85rem;
+  color: #58a6ff;
+  margin-bottom: 8px;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: #888;
+  line-height: 1.6;
+}
