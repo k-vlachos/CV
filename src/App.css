@@ -99,3 +99,79 @@
   color: #888;
   line-height: 1.6;
 }
+
+.back-btn {
+  background: none;
+  border: 1px solid #333;
+  color: #888;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 40px;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.back-btn:hover {
+  border-color: #58a6ff;
+  color: #58a6ff;
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 40px;
+}
+
+.exp-header h1 {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.exp-duration {
+  font-size: 0.85rem;
+  color: #666;
+  white-space: nowrap;
+}
+
+.company-link {
+  font-size: 1rem;
+  color: #58a6ff;
+}
+
+.exp-section {
+  margin-bottom: 40px;
+}
+
+.exp-text {
+  color: #888;
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+.exp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.exp-item {
+  background-color: #141414;
+  border: 1px solid #222;
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.card-clickable {
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.card-clickable:hover {
+  border-color: #58a6ff;
+  transform: translateY(-2px);
+}

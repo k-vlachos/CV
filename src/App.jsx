@@ -1,3 +1,7 @@
+import { Routes, Route, useNavigate } from 'react-router-dom'
+import Cite from './pages/Cite'
+import CobaltFairy from './pages/CobaltFairy'
+import OTE from './pages/OTE'
 import './App.css'
 
 const CV = {
@@ -13,21 +17,23 @@ const CV = {
     {
       company: "C.I.T.E",
       role: "Full Stack Developer",
-      duration: "1.5 years",
+      duration: "18 months",
       description: "Developed a project called OpenCDMP from the ground up. Built full stack features, integrated multiple APIs and gained experience in delivering production-ready software.",
-      link: "https://github.com/OpenCDMP/OpenCDMP"
+      route: "/experience/cite"
     },
     {
       company: "Cobalt Fairy",
       role: "Frontend Developer",
-      duration: "6 months",
-      description: "Built the UI for an upcoming mail provider application using React. Responsible for designing and implementing the full front end of the product."
+      duration: "6 months · Part time",
+      description: "Built the UI for an upcoming mail provider application using React. Responsible for designing and implementing the full front end of the product.",
+      route: "/experience/cobalt-fairy"
     },
     {
       company: "OTE",
-      role: "Telecommunications Intern",
-      duration: "Internship",
-      description: "Troubleshot wired network issues as part of the telecommunications team. Gained hands-on experience in network infrastructure and problem solving."
+      role: "Telecommunications Technician",
+      duration: "6 months · Internship",
+      description: "Troubleshot wired network issues as part of the telecommunications team. Gained hands-on experience in network infrastructure and problem solving.",
+      route: "/experience/ote"
     }
   ],
   education: [
@@ -58,7 +64,9 @@ const CV = {
   ]
 }
 
-function App() {
+function Home() {
+  const navigate = useNavigate()
+
   return (
     <div className="container">
 
@@ -86,18 +94,18 @@ function App() {
       <section className="section">
         <h3 className="section-title">Experience</h3>
         {CV.experience.map(job => (
-          <div className="card" key={job.company}>
+          <div
+            className="card card-clickable"
+            key={job.company}
+            onClick={() => navigate(job.route)}
+          >
             <div className="card-header">
               <h4>{job.role}</h4>
               <span className="duration">{job.duration}</span>
             </div>
             <p className="company">{job.company}</p>
             <p className="description">{job.description}</p>
-            {job.link && (
-              <a href={job.link} target="_blank" rel="noreferrer" className="card-link">
-                View Project →
-              </a>
-            )}
+            <span className="card-link">View details →</span>
           </div>
         ))}
       </section>
@@ -128,6 +136,17 @@ function App() {
       </section>
 
     </div>
+  )
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/experience/cite" element={<Cite />} />
+      <Route path="/experience/cobalt-fairy" element={<CobaltFairy />} />
+      <Route path="/experience/ote" element={<OTE />} />
+    </Routes>
   )
 }
 
