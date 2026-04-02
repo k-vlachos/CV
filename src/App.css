@@ -175,3 +175,35 @@
   border-color: #58a6ff;
   transform: translateY(-2px);
 }
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  color: #666;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: color 0.2s;
+}
+
+.lang-btn:hover {
+  color: #58a6ff;
+}
+
+.lang-btn.active {
+  color: #58a6ff;
+  font-weight: 600;
+}
+
+.lang-divider {
+  color: #333;
+}

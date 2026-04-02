@@ -1,4 +1,5 @@
 import { Routes, Route, useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import Cite from './pages/Cite'
 import CobaltFairy from './pages/CobaltFairy'
 import OTE from './pages/OTE'
@@ -6,83 +7,52 @@ import './App.css'
 
 const CV = {
   name: "Konstantinos Vlachos",
-  title: "Full Stack Developer",
   github: "https://github.com/k-vlachos",
   email: "vlachos2001@gmail.com",
-  skills: [
-    "JavaScript", "TypeScript", "React", "Angular",
-    "Java", "Spring Boot", "C", "C++", "SQL"
-  ],
-  experience: [
-    {
-      company: "C.I.T.E",
-      role: "Full Stack Developer",
-      duration: "18 months",
-      description: "Developed a project called OpenCDMP from the ground up. Built full stack features, integrated multiple APIs and gained experience in delivering production-ready software.",
-      route: "/experience/cite"
-    },
-    {
-      company: "Cobalt Fairy",
-      role: "Frontend Developer",
-      duration: "6 months · Part time",
-      description: "Built the UI for an upcoming mail provider application using React. Responsible for designing and implementing the full front end of the product.",
-      route: "/experience/cobalt-fairy"
-    },
-    {
-      company: "OTE",
-      role: "Telecommunications Technician",
-      duration: "6 months · Internship",
-      description: "Troubleshot wired network issues as part of the telecommunications team. Gained hands-on experience in network infrastructure and problem solving.",
-      route: "/experience/ote"
-    }
-  ],
-  education: [
-    {
-      institution: "University of Peloponnese",
-      degree: "BSc Programming and Telecommunications",
-      status: "In progress"
-    },
-    {
-      institution: "English Language Certificate",
-      degree: "English Proficiency Degree",
-      status: "Completed"
-    }
-  ],
-  projects: [
-    {
-      name: "Employee Map",
-      description: "A web app that displays employees and their locations, integrated with Google Maps to show routes for each employee."
-    },
-    {
-      name: "Discord Bot",
-      description: "A custom Discord bot built from scratch with various automation and utility features."
-    },
-    {
-      name: "Raspberry Pi Server",
-      description: "Self-hosted various services on a Raspberry Pi including game servers and web applications, exploring networking and self-hosting concepts."
-    }
-  ]
+  skills: ["JavaScript", "TypeScript", "React", "Angular", "Java", "Spring Boot", "C", "C++", "SQL"]
 }
 
 function Home() {
   const navigate = useNavigate()
+  const { t, i18n } = useTranslation()
+
+  const toggleLanguage = () => {
+    i18n.changeLanguage(i18n.language === 'en' ? 'gr' : 'en')
+  }
 
   return (
     <div className="container">
 
+      {/* Language Toggle */}
+      <div className="lang-toggle">
+        <button
+          className={`lang-btn ${i18n.language === 'en' ? 'active' : ''}`}
+          onClick={() => i18n.changeLanguage('en')}
+        >
+          EN
+        </button>
+        <span className="lang-divider">|</span>
+        <button
+          className={`lang-btn ${i18n.language === 'gr' ? 'active' : ''}`}
+          onClick={() => i18n.changeLanguage('gr')}
+        >
+          GR
+        </button>
+      </div>
+
       {/* Hero */}
       <section className="hero">
         <h1>{CV.name}</h1>
-        <h2>{CV.title}</h2>
+        <h2>{t('role')}</h2>
         <div className="links">
-          <a href={CV.github} target="_blank" rel="noreferrer">GitHub</a>
-          <a href={`mailto:${CV.email}`}>Email</a>
+          <a href={CV.github} target="_blank" rel="noreferrer">{t('nav.github')}</a>
+          <a href={`mailto:${CV.email}`}>{t('nav.email')}</a>
         </div>
       </section>
 
       {/* Skills */}
       <section className="section">
-        <h3 className="section-title">Skills</h3>
+        <h3 className="section-title">{t('sections.skills')}</h3>
         <div className="skills">
           {CV.skills.map(skill => (
             <span className="skill-tag" key={skill}>{skill}</span>
@@ -92,8 +62,8 @@ function Home() {
 
       {/* Experience */}
       <section className="section">
-        <h3 className="section-title">Experience</h3>
-        {CV.experience.map(job => (
+        <h3 className="section-title">{t('sections.experience')}</h3>
+        {t('experience', { returnObjects: true }).map(job => (
           <div
             className="card card-clickable"
             key={job.company}
@@ -105,15 +75,15 @@ function Home() {
             </div>
             <p className="company">{job.company}</p>
             <p className="description">{job.description}</p>
-            <span className="card-link">View details →</span>
+            <span className="card-link">{i18n.language === 'en' ? 'View details →' : 'Περισσότερα →'}</span>
           </div>
         ))}
       </section>
 
       {/* Education */}
       <section className="section">
-        <h3 className="section-title">Education</h3>
-        {CV.education.map(edu => (
+        <h3 className="section-title">{t('sections.education')}</h3>
+        {t('education', { returnObjects: true }).map(edu => (
           <div className="card" key={edu.institution}>
             <div className="card-header">
               <h4>{edu.institution}</h4>
@@ -126,8 +96,8 @@ function Home() {
 
       {/* Projects */}
       <section className="section">
-        <h3 className="section-title">Projects</h3>
-        {CV.projects.map(project => (
+        <h3 className="section-title">{t('sections.projects')}</h3>
+        {t('projects', { returnObjects: true }).map(project => (
           <div className="card" key={project.name}>
             <h4>{project.name}</h4>
             <p className="description">{project.description}</p>
