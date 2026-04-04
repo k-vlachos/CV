@@ -4,6 +4,7 @@ import Cite from './pages/Cite'
 import CobaltFairy from './pages/CobaltFairy'
 import OTE from './pages/OTE'
 import './App.css'
+import LanguageToggle from './components/LanguageToggle'
 
 const CV = {
   name: "Konstantinos Vlachos",
@@ -23,23 +24,8 @@ function Home() {
   return (
     <div className="container">
 
-      {/* Language Toggle */}
-      <div className="lang-toggle">
-        <button
-          className={`lang-btn ${i18n.language === 'en' ? 'active' : ''}`}
-          onClick={() => i18n.changeLanguage('en')}
-        >
-          EN
-        </button>
-        <span className="lang-divider">|</span>
-        <button
-          className={`lang-btn ${i18n.language === 'gr' ? 'active' : ''}`}
-          onClick={() => i18n.changeLanguage('gr')}
-        >
-          GR
-        </button>
-      </div>
-
+      <LanguageToggle />
+      
       {/* Hero */}
       <section className="hero">
         <h1>{CV.name}</h1>
